@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Socket.io Test</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>Socket.io Test</h1>
+    <input id="message" type="text">
+    <button onclick="sendMessage()">Gönder</button>
+
+    <script>
+        const socket = io();
+
+        // Sunucudan gelen mesajı dinle
+        socket.on('mesaj', (msg) => {
+            console.log('Gelen mesaj: ' + msg);
+        });
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            // Mesajı sunucuya gönder
+            socket.emit('mesaj', message);
+        }
+    </script>
+</body>
+
+</html>
