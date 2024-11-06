@@ -13,7 +13,8 @@
     <button onclick="sendMessage()">Gönder</button>
 
     <script>
-        const socket = io();
+        // Sunucu bağlantısını dinamik olarak oluştur
+        const socket = io(window.location.origin);
 
         // Sunucudan gelen mesajı dinle
         socket.on('mesaj', (msg) => {
